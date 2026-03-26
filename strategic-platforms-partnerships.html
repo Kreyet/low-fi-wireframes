@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Dunamis — Strategic Platforms & Partnerships Wireframe</title>
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      :root {
+        --bg: #f9f8f5;
+        --bg-alt: #ffffff;
+        --text-primary: #111111;
+        --text-secondary: #555555;
+        --text-muted: #888888;
+        --border: #e2e0d8;
+        --accent: #111111;
+        --radius-lg: 16px;
+        --radius-md: 8px;
+      }
+      body {
+        font-family: Georgia, "Times New Roman", serif;
+        background: var(--bg);
+        color: var(--text-primary);
+        font-size: 16px;
+        line-height: 1.7;
+      }
+      nav {
+        background: var(--bg-alt);
+        border-bottom: 1px solid var(--border);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+      .nav-inner {
+        max-width: 1080px;
+        margin: 0 auto;
+        padding: 0 2rem;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .nav-logo {
+        font-family: "Courier New", monospace;
+        font-size: 13px;
+        font-weight: bold;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--text-primary);
+      }
+      .nav-links {
+        display: flex;
+        gap: 28px;
+        list-style: none;
+      }
+      .nav-links a {
+        font-family: "Courier New", monospace;
+        font-size: 11px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--text-secondary);
+        text-decoration: none;
+      }
+      .nav-cta {
+        font-family: "Courier New", monospace;
+        font-size: 11px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        background: var(--accent);
+        color: #fff;
+        padding: 8px 18px;
+        border-radius: var(--radius-md);
+        text-decoration: none;
+      }
+      .container {
+        max-width: 1080px;
+        margin: 0 auto;
+        padding: 0 2rem;
+      }
+      .hero {
+        background: var(--bg-alt);
+        padding: 6rem 2rem 5rem;
+      }
+      .hero-inner {
+        max-width: 1080px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: center;
+      }
+      .hero-eyebrow {
+        font-family: "Courier New", monospace;
+        font-size: 10px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--text-muted);
+        margin-bottom: 1rem;
+      }
+      .hero-headline {
+        font-size: 38px;
+        font-weight: normal;
+        line-height: 1.2;
+        color: var(--text-primary);
+        margin-bottom: 1.25rem;
+        font-style: italic;
+      }
+      .hero-sub {
+        font-family: "Courier New", monospace;
+        font-size: 13px;
+        color: var(--text-secondary);
+        line-height: 1.7;
+        margin-bottom: 2rem;
+      }
+      .hero-actions {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+      .btn-primary {
+        font-family: "Courier New", monospace;
+        font-size: 11px;
+        letter-spacing: 0.07em;
+        text-transform: uppercase;
+        background: var(--accent);
+        color: #fff;
+        padding: 12px 22px;
+        border-radius: var(--radius-md);
+        text-decoration: none;
+        border: none;
+        cursor: pointer;
+      }
+      .btn-outline {
+        font-family: "Courier New", monospace;
+        font-size: 11px;
+        letter-spacing: 0.07em;
+        text-transform: uppercase;
+        background: transparent;
+        color: var(--text-primary);
+        padding: 12px 22px;
+        border-radius: var(--radius-md);
+        border: 1px solid var(--border);
+        text-decoration: none;
+        cursor: pointer;
+      }
+      .img-placeholder {
+        background: #eeede8;
+        border-radius: var(--radius-lg);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #bbb;
+        font-family: "Courier New", monospace;
+        font-size: 10px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+      .hero-img {
+        height: 320px;
+      }
+      .trust-strip {
+        background: var(--bg);
+        border-top: 1px solid var(--border);
+        border-bottom: 1px solid var(--border);
+        padding: 1.5rem 2rem;
+      }
+      .trust-inner {
+        max-width: 1080px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        gap: 2.5rem;
+        flex-wrap: wrap;
+      }
+      .trust-label {
+        font-family: "Courier New", monospace;
+        font-size: 9.5px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--text-muted);
+        white-space: nowrap;
+      }
+      .trust-logos {
+        display: flex;
+        gap: 2rem;
+        flex-wrap: wrap;
+        align-items: center;
+      }
+      .trust-logo {
+        font-family: "Courier New", monospace;
+        font-size: 11px;
+        color: #aaa;
+        letter-spacing: 0.06em;
+        border: 0.5px solid #ddd;
+        padding: 5px 12px;
+        border-radius: 4px;
+      }
+      .section-header {
+        text-align: left;
+        padding: 5rem 0 3rem;
+      }
+      .section-eyebrow {
+        font-family: "Courier New", monospace;
+        font-size: 10px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--text-muted);
+        margin-bottom: 0.75rem;
+      }
+      .section-headline {
+        font-size: 30px;
+        font-weight: normal;
+        font-style: italic;
+        line-height: 1.3;
+        color: var(--text-primary);
+        margin-bottom: 0.75rem;
+        max-width: 580px;
+      }
+      .section-sub {
+        font-family: "Courier New", monospace;
+        font-size: 12.5px;
+        color: var(--text-secondary);
+        max-width: 520px;
+        line-height: 1.65;
+      }
+      .how-it-works {
+        background: var(--bg-alt);
+        padding: 5rem 2rem;
+      }
+      .steps-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 1.5rem;
+        margin-top: 3rem;
+      }
+      .step-card {
+        background: var(--bg);
+        border: 0.5px solid var(--border);
+        border-radius: var(--radius-lg);
+        padding: 2rem;
+      }
+      .step-num {
+        font-family: "Courier New", monospace;
+        font-size: 11px;
+        color: var(--text-muted);
+        letter-spacing: 0.08em;
+        margin-bottom: 1rem;
+        border: 0.5px solid var(--border);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+      }
+      .step-title {
+        font-size: 18px;
+        font-weight: normal;
+        font-style: italic;
+        margin-bottom: 0.75rem;
+      }
+      .step-copy {
+        font-family: "Courier New", monospace;
+        font-size: 12px;
+        color: var(--text-secondary);
+        line-height: 1.65;
+      }
+      .step-img-placeholder {
+        height: 140px;
+        background: #eeede8;
+        border-radius: var(--radius-md);
+        margin-top: 1.25rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "Courier New", monospace;
+        font-size: 9px;
+        color: #bbb;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+      .feature-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: center;
+        padding: 4rem 0;
+        border-bottom: 0.5px solid var(--border);
+      }
+      .feature-row:last-child {
+        border-bottom: none;
+      }
+      .feature-row.reverse {
+        direction: rtl;
+      }
+      .feature-row.reverse > * {
+        direction: ltr;
+      }
+      .feature-eyebrow {
+        font-family: "Courier New", monospace;
+        font-size: 9.5px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--text-muted);
+        margin-bottom: 0.75rem;
+      }
+      .feature-title {
+        font-size: 26px;
+        font-weight: normal;
+        font-style: italic;
+        line-height: 1.3;
+        margin-bottom: 1rem;
+      }
+      .feature-copy {
+        font-family: "Courier New", monospace;
+        font-size: 12px;
+        color: var(--text-secondary);
+        line-height: 1.7;
+        margin-bottom: 1.25rem;
+      }
+      .feature-benefit {
+        font-family: "Courier New", monospace;
+        font-size: 11px;
+        color: var(--text-primary);
+        border-left: 2px solid var(--accent);
+        padding-left: 12px;
+        line-height: 1.6;
+      }
+      .feature-img {
+        height: 340px;
+        background: #eeede8;
+        border-radius: var(--radius-lg);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "Courier New", monospace;
+        font-size: 9px;
+        color: #bbb;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+      .results-section {
+        background: var(--bg-alt);
+        padding: 5rem 2rem;
+      }
+      .before-after {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        margin-top: 2.5rem;
+        margin-bottom: 1.5rem;
+      }
+      .ba-card {
+        border: 0.5px solid var(--border);
+        border-radius: var(--radius-lg);
+        padding: 1.75rem;
+      }
+      .ba-label {
+        font-family: "Courier New", monospace;
+        font-size: 9px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--text-muted);
+        margin-bottom: 0.75rem;
+      }
+      .ba-card.before {
+        background: #f5f4f0;
+      }
+      .ba-card.after {
+        background: #111;
+        color: #eee;
+      }
+      .ba-card.after .ba-label {
+        color: #888;
+      }
+      .ba-copy {
+        font-family: "Courier New", monospace;
+        font-size: 12px;
+        line-height: 1.7;
+      }
+      .roi-card {
+        background: #f5f4f0;
+        border: 0.5px solid var(--border);
+        border-radius: var(--radius-lg);
+        padding: 1.5rem 1.75rem;
+        margin-bottom: 1.5rem;
+      }
+      .roi-label {
+        font-family: "Courier New", monospace;
+        font-size: 9px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--text-muted);
+        margin-bottom: 0.5rem;
+      }
+      .roi-copy {
+        font-family: "Courier New", monospace;
+        font-size: 12px;
+        color: var(--text-secondary);
+        line-height: 1.65;
+      }
+      .case-placeholder {
+        border: 1px dashed #ccc;
+        border-radius: var(--radius-lg);
+        height: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "Courier New", monospace;
+        font-size: 10px;
+        color: #bbb;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+      .compare-section {
+        padding: 5rem 2rem;
+        background: var(--bg);
+      }
+      .compare-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 2.5rem;
+        font-size: 13px;
+      }
+      .compare-table th {
+        text-align: left;
+        font-family: "Courier New", monospace;
+        font-size: 10px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--text-muted);
+        padding: 10px 14px;
+        border-bottom: 1px solid var(--border);
+        font-weight: normal;
+        background: var(--bg-alt);
+      }
+      .compare-table td {
+        padding: 11px 14px;
+        border-bottom: 0.5px solid var(--border);
+        font-family: "Courier New", monospace;
+        font-size: 11.5px;
+        color: var(--text-secondary);
+        background: var(--bg-alt);
+      }
+      .compare-table td:first-child {
+        color: var(--text-primary);
+        font-size: 12.5px;
+        font-family: Georgia, serif;
+      }
+      .compare-table tr:last-child td {
+        border-bottom: none;
+      }
+      .tick {
+        color: #2a7a5a;
+        font-weight: bold;
+      }
+      .part {
+        color: #b07010;
+      }
+      .cross {
+        color: #ccc;
+      }
+      .our-col {
+        background: #f5f4f0 !important;
+        font-weight: bold;
+        color: var(--text-primary) !important;
+      }
+      .social-section {
+        background: var(--bg-alt);
+        padding: 5rem 2rem;
+      }
+      .quotes-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+        margin-top: 2.5rem;
+      }
+      .quote-card {
+        border: 0.5px solid var(--border);
+        border-radius: var(--radius-lg);
+        padding: 1.75rem;
+        background: var(--bg);
+      }
+      .quote-stars {
+        color: #ccc;
+        font-size: 13px;
+        letter-spacing: 2px;
+        margin-bottom: 1rem;
+      }
+      .quote-text {
+        font-size: 14px;
+        font-style: italic;
+        line-height: 1.65;
+        color: var(--text-primary);
+        margin-bottom: 1.25rem;
+      }
+      .quote-attr {
+        font-family: "Courier New", monospace;
+        font-size: 10px;
+        color: var(--text-muted);
+        letter-spacing: 0.06em;
+      }
+      .quote-placeholder {
+        border: 1px dashed #ccc;
+        border-radius: var(--radius-lg);
+        height: 80px;
+        grid-column: 1 / -1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "Courier New", monospace;
+        font-size: 10px;
+        color: #bbb;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+      .cta-section {
+        background: #111;
+        padding: 6rem 2rem;
+        text-align: center;
+      }
+      .cta-headline {
+        font-size: 34px;
+        font-style: italic;
+        font-weight: normal;
+        color: #fff;
+        margin-bottom: 1rem;
+        line-height: 1.3;
+      }
+      .cta-sub {
+        font-family: "Courier New", monospace;
+        font-size: 12px;
+        color: #888;
+        margin-bottom: 2.5rem;
+        line-height: 1.65;
+      }
+      .cta-actions {
+        display: flex;
+        gap: 12px;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      .btn-white {
+        font-family: "Courier New", monospace;
+        font-size: 11px;
+        letter-spacing: 0.07em;
+        text-transform: uppercase;
+        background: #fff;
+        color: #111;
+        padding: 13px 24px;
+        border-radius: var(--radius-md);
+        border: none;
+        cursor: pointer;
+        text-decoration: none;
+      }
+      .btn-ghost {
+        font-family: "Courier New", monospace;
+        font-size: 11px;
+        letter-spacing: 0.07em;
+        text-transform: uppercase;
+        background: transparent;
+        color: #fff;
+        padding: 13px 24px;
+        border-radius: var(--radius-md);
+        border: 1px solid #444;
+        cursor: pointer;
+        text-decoration: none;
+      }
+      .cta-context {
+        font-family: "Courier New", monospace;
+        font-size: 11px;
+        color: #666;
+        margin-top: 1.5rem;
+        font-style: italic;
+      }
+      footer {
+        background: #0d0d0d;
+        padding: 2rem;
+        border-top: 0.5px solid #222;
+      }
+      .footer-inner {
+        max-width: 1080px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+      .footer-tagline {
+        font-family: Georgia, serif;
+        font-size: 12px;
+        font-style: italic;
+        color: #555;
+      }
+      .footer-links {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+      .footer-links a {
+        font-family: "Courier New", monospace;
+        font-size: 10px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: #555;
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <div class="nav-inner">
+        <span class="nav-logo">Dunamis</span>
+        <ul class="nav-links">
+          <li><a href="#">What We Do</a></li>
+          <li><a href="#">How It Works</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+        <a href="#" class="nav-cta">Request a Platform Consultation</a>
+      </div>
+    </nav>
+    <section class="hero">
+      <div class="hero-inner">
+        <div>
+          <p class="hero-eyebrow">Strategic Platforms & Partnerships</p>
+          <h1 class="hero-headline">
+            Technology That Works in the Real World — ICT, Cyber Security, and
+            Geospatial Intelligence Built for Commercial and Operational
+            Reality.
+          </h1>
+          <p class="hero-sub">
+            For leadership teams and organisations that need digital platforms,
+            secure systems, and data-driven decision tools that are fit for
+            purpose — not just technically sound.
+          </p>
+          <div class="hero-actions">
+            <a href="#" class="btn-primary"
+              >Download Platforms & Partnerships Brief</a
+            >
+            <a href="#" class="btn-outline"
+              >Book a Technology Alignment Consultation</a
+            >
+          </div>
+        </div>
+        <div class="img-placeholder hero-img">
+          [ Platform / technology image ]
+        </div>
+      </div>
+    </section>
+    <div class="trust-strip">
+      <div class="trust-inner">
+        <span class="trust-label"
+          >Delivered through specialist partnerships across</span
+        >
+        <div class="trust-logos">
+          <span class="trust-logo">ICT</span
+          ><span class="trust-logo">Cyber Security</span
+          ><span class="trust-logo">Geospatial Intelligence</span
+          ><span class="trust-logo">Data & Applications</span
+          ><span class="trust-logo">Technology Governance</span>
+        </div>
+      </div>
+    </div>
+    <section class="how-it-works">
+      <div class="container">
+        <div class="section-header">
+          <p class="section-eyebrow">How it works</p>
+          <h2 class="section-headline">
+            Technology integrated into commercial and operational reality from
+            day one.
+          </h2>
+        </div>
+        <div class="steps-grid">
+          <div class="step-card">
+            <div class="step-num">1</div>
+            <h3 class="step-title">Assess & Align</h3>
+            <p class="step-copy">
+              We evaluate your digital environment, cyber risk exposure, and
+              data needs against your commercial and operational objectives —
+              identifying where technology can drive real value and where gaps
+              create risk.
+            </p>
+            <div class="step-img-placeholder">[ Screenshot / diagram ]</div>
+          </div>
+          <div class="step-card">
+            <div class="step-num">2</div>
+            <h3 class="step-title">Design & Integrate</h3>
+            <p class="step-copy">
+              Through specialist partnerships, we design secure systems, ICT
+              frameworks, and geospatial or application solutions integrated
+              into your decision-making — not bolted on after the fact.
+            </p>
+            <div class="step-img-placeholder">[ Screenshot / diagram ]</div>
+          </div>
+          <div class="step-card">
+            <div class="step-num">3</div>
+            <h3 class="step-title">Govern & Sustain</h3>
+            <p class="step-copy">
+              We establish technology governance structures that keep platforms
+              fit for purpose, resilient under operational conditions, and
+              adaptable as your organisation grows.
+            </p>
+            <div class="step-img-placeholder">[ Screenshot / diagram ]</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section style="background: var(--bg); padding: 2rem 0">
+      <div class="container">
+        <div class="section-header">
+          <p class="section-eyebrow">What we deliver</p>
+          <h2 class="section-headline">
+            Organisations invest in technology that looks capable on paper but
+            fails in operation.
+          </h2>
+          <p class="section-sub">
+            Systems not aligned to commercial needs, cyber risk not properly
+            understood, and data that sits unused because it isn't connected to
+            real decisions. We design around how organisations actually operate.
+          </p>
+        </div>
+        <div class="feature-row">
+          <div>
+            <p class="feature-eyebrow">
+              Strategic Platforms, ICT & Cyber Security
+            </p>
+            <h3 class="feature-title">
+              Secure systems designed for real operating environments.
+            </h3>
+            <p class="feature-copy">
+              We work through specialist partnerships to deliver ICT and cyber
+              security solutions aligned to commercial and operational needs.
+              This includes cyber risk advisory, secure systems design, and
+              technology governance — ensuring digital platforms are fit for
+              purpose and resilient in real operating environments.
+            </p>
+            <p class="feature-benefit">
+              Organisations with properly governed digital platforms and managed
+              cyber risk make better commercial decisions and avoid costly
+              exposure.
+            </p>
+          </div>
+          <div class="feature-img">[ Feature image / screenshot ]</div>
+        </div>
+        <div class="feature-row reverse">
+          <div>
+            <p class="feature-eyebrow">
+              Data, Geospatial & Application Solutions
+            </p>
+            <h3 class="feature-title">
+              Intelligence that connects spatial data to real decisions.
+            </h3>
+            <p class="feature-copy">
+              We integrate data, geospatial intelligence, and application
+              solutions into commercial, trade, and infrastructure
+              decision-making. This includes collaboration with Geo Lens Data
+              Solutions — supporting spatial analysis, market insight, planning,
+              and digital application use cases.
+            </p>
+            <p class="feature-benefit">
+              Faster, better-evidenced decisions. Infrastructure and market
+              planning grounded in spatial and commercial data.
+            </p>
+          </div>
+          <div class="feature-img">[ Feature image / screenshot ]</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="results-section">
+      <div class="container">
+        <div class="section-header">
+          <p class="section-eyebrow">Results & Outcomes</p>
+          <h2 class="section-headline">
+            What changes when technology is built for purpose.
+          </h2>
+        </div>
+        <div class="before-after">
+          <div class="ba-card before">
+            <p class="ba-label">Before</p>
+            <p class="ba-copy">
+              Leadership teams make decisions without adequate data, operate on
+              platforms with unmanaged cyber risk, and lack governance to keep
+              digital systems aligned to business needs.
+            </p>
+          </div>
+          <div class="ba-card after">
+            <p class="ba-label">After</p>
+            <p class="ba-copy">
+              Decisions are supported by geospatial intelligence and
+              application-ready data. Systems are secure, governed, and aligned
+              to operational reality. Technology investments deliver measurable
+              commercial value.
+            </p>
+          </div>
+        </div>
+        <div class="roi-card">
+          <p class="roi-label">Featured partnership</p>
+          <p class="roi-copy">
+            Geo Lens Data Solutions — geospatial analytics and spatial
+            intelligence supporting market insight, infrastructure planning, and
+            digital application use cases across commercial and trade
+            environments.
+          </p>
+        </div>
+        <div class="case-placeholder">
+          [ Case study — geospatial use case / site selection / market mapping ]
+        </div>
+      </div>
+    </section>
+
+    <section class="compare-section">
+      <div class="container">
+        <div class="section-header">
+          <p class="section-eyebrow">Why us</p>
+          <h2 class="section-headline">
+            How we compare to the alternatives organisations typically consider.
+          </h2>
+        </div>
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th>Capability</th>
+              <th class="our-col">Dunamis</th>
+              <th>General IT Vendors</th>
+              <th>Cyber Security Firms</th>
+              <th>GIS / Data Consultancies</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>ICT solution delivery</td>
+              <td class="our-col tick">✓</td>
+              <td class="tick">✓</td>
+              <td class="cross">—</td>
+              <td class="cross">—</td>
+            </tr>
+            <tr>
+              <td>Cyber risk advisory</td>
+              <td class="our-col tick">✓</td>
+              <td class="part">Partial</td>
+              <td class="tick">✓</td>
+              <td class="cross">—</td>
+            </tr>
+            <tr>
+              <td>Secure systems design</td>
+              <td class="our-col tick">✓</td>
+              <td class="part">Partial</td>
+              <td class="tick">✓</td>
+              <td class="cross">—</td>
+            </tr>
+            <tr>
+              <td>Technology governance</td>
+              <td class="our-col tick">✓</td>
+              <td class="part">Partial</td>
+              <td class="part">Partial</td>
+              <td class="cross">—</td>
+            </tr>
+            <tr>
+              <td>Geospatial intelligence</td>
+              <td class="our-col tick">✓</td>
+              <td class="cross">—</td>
+              <td class="cross">—</td>
+              <td class="tick">✓</td>
+            </tr>
+            <tr>
+              <td>Commercial decision integration</td>
+              <td class="our-col tick">✓</td>
+              <td class="cross">—</td>
+              <td class="cross">—</td>
+              <td class="part">Partial</td>
+            </tr>
+            <tr>
+              <td>Specialist partnership model</td>
+              <td class="our-col tick">✓</td>
+              <td class="cross">—</td>
+              <td class="cross">—</td>
+              <td class="cross">—</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="social-section">
+      <div class="container">
+        <div class="section-header">
+          <p class="section-eyebrow">Social proof</p>
+          <h2 class="section-headline">
+            What leadership and technical teams say.
+          </h2>
+        </div>
+        <div class="quotes-grid">
+          <div class="quote-card">
+            <p class="quote-stars">★ ★ ★ ★ ★</p>
+            <p class="quote-text">
+              "They didn't just deliver a system — they made sure it was aligned
+              to how we actually operate. The cyber risk advisory alone changed
+              how we approach our digital environment."
+            </p>
+            <p class="quote-attr">[Name], CEO / CTO — [Organisation]</p>
+          </div>
+          <div class="quote-card">
+            <p class="quote-stars">★ ★ ★ ★ ★</p>
+            <p class="quote-text">
+              "The geospatial intelligence we got through the Geo Lens
+              partnership gave us a level of market and site visibility we
+              didn't have before. It changed the quality of our decisions."
+            </p>
+            <p class="quote-attr">[Name], Commercial Director — [Company]</p>
+          </div>
+          <div class="quote-placeholder">[ Add 1–2 further testimonials ]</div>
+        </div>
+      </div>
+    </section>
+    <section class="cta-section">
+      <h2 class="cta-headline">
+        Tell us your operating environment and your decision challenges.<br />We'll
+        show you where technology can make the difference.
+      </h2>
+      <p class="cta-sub">
+        Platforms built for purpose. Intelligence that drives decisions.
+      </p>
+      <div class="cta-actions">
+        <a href="#" class="btn-white"
+          >Download Platforms & Partnerships Brief</a
+        >
+        <a href="#" class="btn-ghost"
+          >Book a Technology Alignment Consultation</a
+        >
+      </div>
+      <p class="cta-context">
+        "Platforms built for purpose. Intelligence that drives decisions."
+      </p>
+    </section>
+    <footer>
+      <div class="footer-inner">
+        <p class="footer-tagline">
+          "Platforms built for purpose. Intelligence that drives decisions."
+        </p>
+        <div class="footer-links">
+          <a href="#">What We Do</a><a href="#">How It Works</a
+          ><a href="#">About</a><a href="#">Contact</a
+          ><a href="#">Privacy Policy</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
