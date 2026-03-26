@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Dunamis — Commodities Trade & GOC Engagement Wireframe</title>
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      :root {
+        --bg: #f9f8f5;
+        --bg-alt: #ffffff;
+        --text-primary: #111111;
+        --text-secondary: #555555;
+        --text-muted: #888888;
+        --border: #e2e0d8;
+        --accent: #111111;
+        --radius-lg: 16px;
+        --radius-md: 8px;
+      }
+      body {
+        font-family: Georgia, "Times New Roman", serif;
+        background: var(--bg);
+        color: var(--text-primary);
+        font-size: 16px;
+        line-height: 1.7;
+      }
+      nav {
+        background: var(--bg-alt);
+        border-bottom: 1px solid var(--border);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+      .nav-inner {
+        max-width: 1080px;
+        margin: 0 auto;
+        padding: 0 2rem;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .nav-logo {
+        font-family: "Courier New", monospace;
+        font-size: 13px;
+        font-weight: bold;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--text-primary);
+      }
+      .nav-links {
+        display: flex;
+        gap: 28px;
+        list-style: none;
+      }
+      .nav-links a {
+        font-family: "Courier New", monospace;
+        font-size: 11px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--text-secondary);
+        text-decoration: none;
+      }
+      .nav-cta {
+        font-family: "Courier New", monospace;
+        font-size: 11px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        background: var(--accent);
+        color: #fff;
+        padding: 8px 18px;
+        border-radius: var(--radius-md);
+        text-decoration: none;
+      }
+      .container {
+        max-width: 1080px;
+        margin: 0 auto;
+        padding: 0 2rem;
+      }
+      .hero {
+        background: var(--bg-alt);
+        padding: 6rem 2rem 5rem;
+      }
+      .hero-inner {
+        max-width: 1080px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: center;
+      }
+      .hero-eyebrow {
+        font-family: "Courier New", monospace;
+        font-size: 10px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--text-muted);
+        margin-bottom: 1rem;
+      }
+      .hero-headline {
+        font-size: 38px;
+        font-weight: normal;
+        line-height: 1.2;
+        color: var(--text-primary);
+        margin-bottom: 1.25rem;
+        font-style: italic;
+      }
+      .hero-sub {
+        font-family: "Courier New", monospace;
+        font-size: 13px;
+        color: var(--text-secondary);
+        line-height: 1.7;
+        margin-bottom: 2rem;
+      }
+      .hero-actions {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+      .btn-primary {
+        font-family: "Courier New", monospace;
+        font-size: 11px;
+        letter-spacing: 0.07em;
+        text-transform: uppercase;
+        background: var(--accent);
+        color: #fff;
+        padding: 12px 22px;
+        border-radius: var(--radius-md);
+        text-decoration: none;
+        border: none;
+        cursor: pointer;
+      }
+      .btn-outline {
+        font-family: "Courier New", monospace;
+        font-size: 11px;
+        letter-spacing: 0.07em;
+        text-transform: uppercase;
+        background: transparent;
+        color: var(--text-primary);
+        padding: 12px 22px;
+        border-radius: var(--radius-md);
+        border: 1px solid var(--border);
+        text-decoration: none;
+        cursor: pointer;
+      }
+      .img-placeholder {
+        background: #eeede8;
+        border-radius: var(--radius-lg);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #bbb;
+        font-family: "Courier New", monospace;
+        font-size: 10px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+      .hero-img {
+        height: 320px;
+      }
+      .trust-strip {
+        background: var(--bg);
+        border-top: 1px solid var(--border);
+        border-bottom: 1px solid var(--border);
+        padding: 1.5rem 2rem;
+      }
+      .trust-inner {
+        max-width: 1080px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        gap: 2.5rem;
+        flex-wrap: wrap;
+      }
+      .trust-label {
+        font-family: "Courier New", monospace;
+        font-size: 9.5px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--text-muted);
+        white-space: nowrap;
+      }
+      .trust-logos {
+        display: flex;
+        gap: 2rem;
+        flex-wrap: wrap;
+        align-items: center;
+      }
+      .trust-logo {
+        font-family: "Courier New", monospace;
+        font-size: 11px;
+        color: #aaa;
+        letter-spacing: 0.06em;
+        border: 0.5px solid #ddd;
+        padding: 5px 12px;
+        border-radius: 4px;
+      }
+      .section-header {
+        text-align: left;
+        padding: 5rem 0 3rem;
+      }
+      .section-eyebrow {
+        font-family: "Courier New", monospace;
+        font-size: 10px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--text-muted);
+        margin-bottom: 0.75rem;
+      }
+      .section-headline {
+        font-size: 30px;
+        font-weight: normal;
+        font-style: italic;
+        line-height: 1.3;
+        color: var(--text-primary);
+        margin-bottom: 0.75rem;
+        max-width: 580px;
+      }
+      .section-sub {
+        font-family: "Courier New", monospace;
+        font-size: 12.5px;
+        color: var(--text-secondary);
+        max-width: 520px;
+        line-height: 1.65;
+      }
+      .how-it-works {
+        background: var(--bg-alt);
+        padding: 5rem 2rem;
+      }
+      .steps-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 1.5rem;
+        margin-top: 3rem;
+      }
+      .step-card {
+        background: var(--bg);
+        border: 0.5px solid var(--border);
+        border-radius: var(--radius-lg);
+        padding: 2rem;
+      }
+      .step-num {
+        font-family: "Courier New", monospace;
+        font-size: 11px;
+        color: var(--text-muted);
+        letter-spacing: 0.08em;
+        margin-bottom: 1rem;
+        border: 0.5px solid var(--border);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+      }
+      .step-title {
+        font-size: 18px;
+        font-weight: normal;
+        font-style: italic;
+        margin-bottom: 0.75rem;
+      }
+      .step-copy {
+        font-family: "Courier New", monospace;
+        font-size: 12px;
+        color: var(--text-secondary);
+        line-height: 1.65;
+      }
+      .step-img-placeholder {
+        height: 140px;
+        background: #eeede8;
+        border-radius: var(--radius-md);
+        margin-top: 1.25rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "Courier New", monospace;
+        font-size: 9px;
+        color: #bbb;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+      .feature-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: center;
+        padding: 4rem 0;
+        border-bottom: 0.5px solid var(--border);
+      }
+      .feature-row:last-child {
+        border-bottom: none;
+      }
+      .feature-row.reverse {
+        direction: rtl;
+      }
+      .feature-row.reverse > * {
+        direction: ltr;
+      }
+      .feature-eyebrow {
+        font-family: "Courier New", monospace;
+        font-size: 9.5px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--text-muted);
+        margin-bottom: 0.75rem;
+      }
+      .feature-title {
+        font-size: 26px;
+        font-weight: normal;
+        font-style: italic;
+        line-height: 1.3;
+        margin-bottom: 1rem;
+      }
+      .feature-copy {
+        font-family: "Courier New", monospace;
+        font-size: 12px;
+        color: var(--text-secondary);
+        line-height: 1.7;
+        margin-bottom: 1.25rem;
+      }
+      .feature-benefit {
+        font-family: "Courier New", monospace;
+        font-size: 11px;
+        color: var(--text-primary);
+        border-left: 2px solid var(--accent);
+        padding-left: 12px;
+        line-height: 1.6;
+      }
+      .feature-img {
+        height: 340px;
+        background: #eeede8;
+        border-radius: var(--radius-lg);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "Courier New", monospace;
+        font-size: 9px;
+        color: #bbb;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+      .results-section {
+        background: var(--bg-alt);
+        padding: 5rem 2rem;
+      }
+      .before-after {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        margin-top: 2.5rem;
+        margin-bottom: 1.5rem;
+      }
+      .ba-card {
+        border: 0.5px solid var(--border);
+        border-radius: var(--radius-lg);
+        padding: 1.75rem;
+      }
+      .ba-label {
+        font-family: "Courier New", monospace;
+        font-size: 9px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--text-muted);
+        margin-bottom: 0.75rem;
+      }
+      .ba-card.before {
+        background: #f5f4f0;
+      }
+      .ba-card.after {
+        background: #111;
+        color: #eee;
+      }
+      .ba-card.after .ba-label {
+        color: #888;
+      }
+      .ba-copy {
+        font-family: "Courier New", monospace;
+        font-size: 12px;
+        line-height: 1.7;
+      }
+      .roi-card {
+        background: #f5f4f0;
+        border: 0.5px solid var(--border);
+        border-radius: var(--radius-lg);
+        padding: 1.5rem 1.75rem;
+        margin-bottom: 1.5rem;
+      }
+      .roi-label {
+        font-family: "Courier New", monospace;
+        font-size: 9px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--text-muted);
+        margin-bottom: 0.5rem;
+      }
+      .roi-copy {
+        font-family: "Courier New", monospace;
+        font-size: 12px;
+        color: var(--text-secondary);
+        line-height: 1.65;
+      }
+      .case-placeholder {
+        border: 1px dashed #ccc;
+        border-radius: var(--radius-lg);
+        height: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "Courier New", monospace;
+        font-size: 10px;
+        color: #bbb;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+      .compare-section {
+        padding: 5rem 2rem;
+        background: var(--bg);
+      }
+      .compare-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 2.5rem;
+        font-size: 13px;
+      }
+      .compare-table th {
+        text-align: left;
+        font-family: "Courier New", monospace;
+        font-size: 10px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--text-muted);
+        padding: 10px 14px;
+        border-bottom: 1px solid var(--border);
+        font-weight: normal;
+        background: var(--bg-alt);
+      }
+      .compare-table td {
+        padding: 11px 14px;
+        border-bottom: 0.5px solid var(--border);
+        font-family: "Courier New", monospace;
+        font-size: 11.5px;
+        color: var(--text-secondary);
+        background: var(--bg-alt);
+      }
+      .compare-table td:first-child {
+        color: var(--text-primary);
+        font-size: 12.5px;
+        font-family: Georgia, serif;
+      }
+      .compare-table tr:last-child td {
+        border-bottom: none;
+      }
+      .tick {
+        color: #2a7a5a;
+        font-weight: bold;
+      }
+      .part {
+        color: #b07010;
+      }
+      .cross {
+        color: #ccc;
+      }
+      .our-col {
+        background: #f5f4f0 !important;
+        font-weight: bold;
+        color: var(--text-primary) !important;
+      }
+      .social-section {
+        background: var(--bg-alt);
+        padding: 5rem 2rem;
+      }
+      .quotes-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+        margin-top: 2.5rem;
+      }
+      .quote-card {
+        border: 0.5px solid var(--border);
+        border-radius: var(--radius-lg);
+        padding: 1.75rem;
+        background: var(--bg);
+      }
+      .quote-stars {
+        color: #ccc;
+        font-size: 13px;
+        letter-spacing: 2px;
+        margin-bottom: 1rem;
+      }
+      .quote-text {
+        font-size: 14px;
+        font-style: italic;
+        line-height: 1.65;
+        color: var(--text-primary);
+        margin-bottom: 1.25rem;
+      }
+      .quote-attr {
+        font-family: "Courier New", monospace;
+        font-size: 10px;
+        color: var(--text-muted);
+        letter-spacing: 0.06em;
+      }
+      .quote-placeholder {
+        border: 1px dashed #ccc;
+        border-radius: var(--radius-lg);
+        height: 80px;
+        grid-column: 1 / -1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "Courier New", monospace;
+        font-size: 10px;
+        color: #bbb;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+      .cta-section {
+        background: #111;
+        padding: 6rem 2rem;
+        text-align: center;
+      }
+      .cta-headline {
+        font-size: 34px;
+        font-style: italic;
+        font-weight: normal;
+        color: #fff;
+        margin-bottom: 1rem;
+        line-height: 1.3;
+      }
+      .cta-sub {
+        font-family: "Courier New", monospace;
+        font-size: 12px;
+        color: #888;
+        margin-bottom: 2.5rem;
+        line-height: 1.65;
+      }
+      .cta-actions {
+        display: flex;
+        gap: 12px;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      .btn-white {
+        font-family: "Courier New", monospace;
+        font-size: 11px;
+        letter-spacing: 0.07em;
+        text-transform: uppercase;
+        background: #fff;
+        color: #111;
+        padding: 13px 24px;
+        border-radius: var(--radius-md);
+        border: none;
+        cursor: pointer;
+        text-decoration: none;
+      }
+      .btn-ghost {
+        font-family: "Courier New", monospace;
+        font-size: 11px;
+        letter-spacing: 0.07em;
+        text-transform: uppercase;
+        background: transparent;
+        color: #fff;
+        padding: 13px 24px;
+        border-radius: var(--radius-md);
+        border: 1px solid #444;
+        cursor: pointer;
+        text-decoration: none;
+      }
+      .cta-context {
+        font-family: "Courier New", monospace;
+        font-size: 11px;
+        color: #666;
+        margin-top: 1.5rem;
+        font-style: italic;
+      }
+      footer {
+        background: #0d0d0d;
+        padding: 2rem;
+        border-top: 0.5px solid #222;
+      }
+      .footer-inner {
+        max-width: 1080px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+      .footer-tagline {
+        font-family: Georgia, serif;
+        font-size: 12px;
+        font-style: italic;
+        color: #555;
+      }
+      .footer-links {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+      .footer-links a {
+        font-family: "Courier New", monospace;
+        font-size: 10px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: #555;
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <div class="nav-inner">
+        <span class="nav-logo">Dunamis</span>
+        <ul class="nav-links">
+          <li><a href="#">What We Do</a></li>
+          <li><a href="#">How It Works</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+        <a href="#" class="nav-cta">Discuss Your Trade Corridor</a>
+      </div>
+    </nav>
+    <section class="hero">
+      <div class="hero-inner">
+        <div>
+          <p class="hero-eyebrow">Commodities Trade & GOC Engagement</p>
+          <h1 class="hero-headline">
+            African Commodities. Global Markets. Structured Trade Across 40+
+            Countries.
+          </h1>
+          <p class="hero-sub">
+            For producers, exporters, international buyers, and logistics
+            partners who need coordinated, end-to-end commodities trade
+            facilitation — with institutional market access across Africa, the
+            United States, Europe, the Middle East, and Asia.
+          </p>
+          <div class="hero-actions">
+            <a href="#" class="btn-primary">Download Commodities Trade Brief</a>
+            <a href="#" class="btn-outline"
+              >Talk to Us About Your Trade Corridor</a
+            >
+          </div>
+        </div>
+        <div class="img-placeholder hero-img">
+          [ Trade corridor / market image ]
+        </div>
+      </div>
+    </section>
+    <div class="trust-strip">
+      <div class="trust-inner">
+        <span class="trust-label">Market reach across</span>
+        <div class="trust-logos">
+          <span class="trust-logo">Africa</span
+          ><span class="trust-logo">United States</span
+          ><span class="trust-logo">Europe</span
+          ><span class="trust-logo">Middle East</span
+          ><span class="trust-logo">Asia — 40+ Countries</span>
+        </div>
+      </div>
+    </div>
+    <section class="how-it-works">
+      <div class="container">
+        <div class="section-header">
+          <p class="section-eyebrow">How it works</p>
+          <h2 class="section-headline">
+            Structured trade from African origin to international off-take —
+            managed end to end.
+          </h2>
+        </div>
+        <div class="steps-grid">
+          <div class="step-card">
+            <div class="step-num">1</div>
+            <h3 class="step-title">Link & Structure</h3>
+            <p class="step-copy">
+              We identify and connect producers, exporters, buyers, and
+              logistics partners across African and international markets — and
+              structure the transaction framework before a single shipment
+              moves.
+            </p>
+            <div class="step-img-placeholder">[ Screenshot / diagram ]</div>
+          </div>
+          <div class="step-card">
+            <div class="step-num">2</div>
+            <h3 class="step-title">Align & Coordinate</h3>
+            <p class="step-copy">
+              We manage documentation alignment, customs navigation, and partner
+              coordination across the full trade corridor — working with
+              international trade and customs advisors in the Americas and
+              Europe where required.
+            </p>
+            <div class="step-img-placeholder">[ Screenshot / diagram ]</div>
+          </div>
+          <div class="step-card">
+            <div class="step-num">3</div>
+            <h3 class="step-title">Execute to Off-Take</h3>
+            <p class="step-copy">
+              We manage the flow from origin through logistics to final
+              off-take, keeping all parties coordinated and the transaction on
+              track to close.
+            </p>
+            <div class="step-img-placeholder">[ Screenshot / diagram ]</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section style="background: var(--bg); padding: 2rem 0">
+      <div class="container">
+        <div class="section-header">
+          <p class="section-eyebrow">What we do</p>
+          <h2 class="section-headline">
+            Commodities trade breaks down where it matters most — at the
+            coordination layer.
+          </h2>
+          <p class="section-sub">
+            The right buyer can't find the right producer. Documentation falls
+            out of alignment at customs. Logistics partners aren't integrated
+            into the transaction flow. Deals stall or collapse before off-take.
+          </p>
+        </div>
+        <div class="feature-row">
+          <div>
+            <p class="feature-eyebrow">Commodities Trade Facilitation</p>
+            <h3 class="feature-title">
+              Structured trade from African origin to international off-take.
+            </h3>
+            <p class="feature-copy">
+              We facilitate structured commodities trade by linking producers,
+              exporters, buyers, and logistics partners across selected African
+              and international markets. Our role focuses on partner
+              coordination, transaction structuring, documentation alignment,
+              and managing the flow from origin to off-take — working alongside
+              international trade and customs advisors in the Americas and
+              Europe where required.
+            </p>
+            <p class="feature-benefit">
+              Structured commodities trade that reduces deal failure, eliminates
+              coordination gaps, and connects African supply to international
+              off-take through a managed, end-to-end facilitation model.
+            </p>
+          </div>
+          <div class="feature-img">[ Feature image / screenshot ]</div>
+        </div>
+        <div class="feature-row reverse">
+          <div>
+            <p class="feature-eyebrow">
+              GOC Engagement — Global Opportunities Committee
+            </p>
+            <h3 class="feature-title">
+              Institutional market access across 40+ countries.
+            </h3>
+            <p class="feature-copy">
+              Dunamis leadership engages international markets through the
+              Global Opportunities Committee (GOC) of the Atlanta Black Chambers
+              — a global business chamber operating across 40+ countries. This
+              network supports partner identification, market access, and deal
+              positioning between African markets, the United States, Europe,
+              the Middle East, and Asia.
+            </p>
+            <p class="feature-benefit">
+              Verified institutional reach into international buyer and partner
+              networks across four continents — turning market access from an
+              aspiration into an operational reality.
+            </p>
+          </div>
+          <div class="feature-img">[ Feature image / screenshot ]</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="results-section">
+      <div class="container">
+        <div class="section-header">
+          <p class="section-eyebrow">Results & Outcomes</p>
+          <h2 class="section-headline">
+            What changes when commodities trade is properly structured.
+          </h2>
+        </div>
+        <div class="before-after">
+          <div class="ba-card before">
+            <p class="ba-label">Before</p>
+            <p class="ba-copy">
+              Producers and exporters have supply but no reliable route to
+              international buyers. Buyers can't access verified African supply
+              with confidence. Transactions stall on documentation, logistics
+              gaps, and customs complexity.
+            </p>
+          </div>
+          <div class="ba-card after">
+            <p class="ba-label">After</p>
+            <p class="ba-copy">
+              Verified linkages connect supply to demand. Transactions are
+              structured and coordinated end-to-end. Documentation is aligned.
+              Goods move from African origin to international off-take on a
+              managed, governed trade flow.
+            </p>
+          </div>
+        </div>
+        <div class="roi-card">
+          <p class="roi-label">ROI framing</p>
+          <p class="roi-copy">
+            Fewer failed transactions &nbsp;·&nbsp; Reduced customs and
+            documentation delays &nbsp;·&nbsp; Access to international markets
+            previously out of reach &nbsp;·&nbsp; Trade flows that scale as
+            volumes and relationships grow
+          </p>
+        </div>
+        <div
+          class="roi-card"
+          style="border-left: 3px solid #111; background: #fff"
+        >
+          <p class="roi-label">GOC Network advantage</p>
+          <p class="roi-copy">
+            Atlanta Black Chambers &nbsp;·&nbsp; Global Opportunities Committee
+            &nbsp;·&nbsp; 40+ countries &nbsp;·&nbsp; Africa ↔ US &nbsp;·&nbsp;
+            Africa ↔ Europe &nbsp;·&nbsp; Africa ↔ Middle East &nbsp;·&nbsp;
+            Africa ↔ Asia
+          </p>
+        </div>
+        <div class="case-placeholder">
+          [ Case study — commodity trade flow from Africa to Americas or Europe
+          ]
+        </div>
+      </div>
+    </section>
+
+    <section class="compare-section">
+      <div class="container">
+        <div class="section-header">
+          <p class="section-eyebrow">Why us</p>
+          <h2 class="section-headline">
+            How we compare to the alternatives producers and buyers typically
+            consider.
+          </h2>
+        </div>
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th>Capability</th>
+              <th class="our-col">Dunamis</th>
+              <th>Commodity Brokers</th>
+              <th>Freight & Logistics</th>
+              <th>Trade Finance Advisors</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Producer-buyer linkage</td>
+              <td class="our-col tick">✓</td>
+              <td class="tick">✓</td>
+              <td class="cross">—</td>
+              <td class="cross">—</td>
+            </tr>
+            <tr>
+              <td>Transaction structuring</td>
+              <td class="our-col tick">✓</td>
+              <td class="part">Partial</td>
+              <td class="cross">—</td>
+              <td class="part">Partial</td>
+            </tr>
+            <tr>
+              <td>Documentation & customs alignment</td>
+              <td class="our-col tick">✓</td>
+              <td class="part">Partial</td>
+              <td class="part">Partial</td>
+              <td class="cross">—</td>
+            </tr>
+            <tr>
+              <td>Logistics partner coordination</td>
+              <td class="our-col tick">✓</td>
+              <td class="cross">—</td>
+              <td class="tick">✓</td>
+              <td class="cross">—</td>
+            </tr>
+            <tr>
+              <td>International advisor network (Americas / Europe)</td>
+              <td class="our-col tick">✓</td>
+              <td class="cross">—</td>
+              <td class="cross">—</td>
+              <td class="part">Partial</td>
+            </tr>
+            <tr>
+              <td>GOC institutional market access (40+ countries)</td>
+              <td class="our-col tick">✓</td>
+              <td class="cross">—</td>
+              <td class="cross">—</td>
+              <td class="cross">—</td>
+            </tr>
+            <tr>
+              <td>End-to-end flow management</td>
+              <td class="our-col tick">✓</td>
+              <td class="cross">—</td>
+              <td class="cross">—</td>
+              <td class="cross">—</td>
+            </tr>
+            <tr>
+              <td>African market presence</td>
+              <td class="our-col tick">✓</td>
+              <td class="part">Partial</td>
+              <td class="part">Partial</td>
+              <td class="cross">—</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="social-section">
+      <div class="container">
+        <div class="section-header">
+          <p class="section-eyebrow">Social proof</p>
+          <h2 class="section-headline">
+            What producers, international buyers, and logistics partners say.
+          </h2>
+        </div>
+        <div class="quotes-grid">
+          <div class="quote-card">
+            <p class="quote-stars">★ ★ ★ ★ ★</p>
+            <p class="quote-text">
+              "They gave us a direct line to verified international buyers and
+              managed the documentation and customs coordination we couldn't
+              handle alone. The deal closed cleanly."
+            </p>
+            <p class="quote-attr">
+              [Name], Export Director — [Producer / Trading House, Africa]
+            </p>
+          </div>
+          <div class="quote-card">
+            <p class="quote-stars">★ ★ ★ ★ ★</p>
+            <p class="quote-text">
+              "We'd struggled to find a reliable facilitation partner for
+              African supply. They structured the transaction from origin and
+              kept us informed at every stage through to delivery."
+            </p>
+            <p class="quote-attr">
+              [Name], Procurement Lead — [Buyer, Americas / Europe]
+            </p>
+          </div>
+          <div class="quote-placeholder">[ Add 1–2 further testimonials ]</div>
+        </div>
+      </div>
+    </section>
+    <section class="cta-section">
+      <h2 class="cta-headline">
+        Tell us your commodity, your origin market, and your destination.<br />We'll
+        structure the path to off-take.
+      </h2>
+      <p class="cta-sub">
+        African supply. Global reach. Trade structured end to end.
+      </p>
+      <div class="cta-actions">
+        <a href="#" class="btn-white">Download Commodities Trade Brief</a>
+        <a href="#" class="btn-ghost">Talk to Us About Your Trade Corridor</a>
+      </div>
+      <p class="cta-context">
+        "African supply. Global reach. Trade structured end to end."
+      </p>
+    </section>
+    <footer>
+      <div class="footer-inner">
+        <p class="footer-tagline">
+          "African supply. Global reach. Trade structured end to end."
+        </p>
+        <div class="footer-links">
+          <a href="#">What We Do</a><a href="#">How It Works</a
+          ><a href="#">About</a><a href="#">Contact</a
+          ><a href="#">Privacy Policy</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
